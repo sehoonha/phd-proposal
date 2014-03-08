@@ -1416,7 +1416,7 @@ openright,doublespaced,normalmargins,final}
        Presented to\\
        The Academic Faculty\\
     \else
-       A \ifdissertation Dissertation\else Thesis\fi\\
+       A \ifdissertation Dissertation\else Thesis Proposal\fi\\
        Presented to\\
        The Academic Faculty\\
     \fi

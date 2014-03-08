@@ -5,13 +5,13 @@
 %% This example is adapted from ucthesis.tex, a part of the
 %% UCTHESIS class package...
 %%
-\title{The Elements of Thesis} %% If you want to specify a linebreak
+\title{Proposal: \protect\\ Human guided iterative training of dynamic motor skills} %% If you want to specify a linebreak
                                %% in the thesis title, you MUST use
                                %% \protect\\ instead of \\, as \\ is a
                                %% fragile command that \MakeUpperCase
                                %% will break!
-\author{Perry H. Disdainful}
-\department{School of Industrial and Systems Engineering}
+\author{Sehoon Ha}
+\department{School of Computer Science}
 
 %% Can have up to six readers, plus principaladvisor and
 %% committeechair. All have the form
@@ -23,14 +23,17 @@
 %% to the department defined above and Institution defaults to Georgia
 %% Institute of Technology.
 
-\principaladvisor{Professor Alpha Betic}
-\committeechair{Professor Ignatius Arrogant}
-\firstreader{Professor General Reference}[School of Mathematics]
-\secondreader{Professor Ivory Insular}[Department of Computer Science and Operations Research][North Dakota State University]
-\thirdreader{Professor Earl Grey}
-\fourthreader{Professor John Smith}
-\fifthreader{Professor Jane Doe}[Another Department With a Long Name][Another Institution]
-%\setcounter{secnumdepth}{2}
+\principaladvisor{Professor C. Karen Liu}
+%% \committeechair{Professor Ignatius Arrogant}
+\firstreader{Professor Greg Turk}
+\secondreader{Professor Jarek Rossignac}
+\thirdreader{Professor Jun Ueda}[School of Mechanical Engineering]
+%% \firstreader{Professor General Reference}[School of Mathematics]
+%% \secondreader{Professor Ivory Insular}[Department of Computer Science and Operations Research][North Dakota State University]
+%% \thirdreader{Professor Earl Grey}
+%% \fourthreader{Professor John Smith}
+%% \fifthreader{Professor Jane Doe}[Another Department With a Long Name][Another Institution]
+%% %\setcounter{secnumdepth}{2}
 \degree{Doctor of Philosophy}
 
 %% Set \listmajortrue below, then uncomment and set this for
@@ -40,8 +43,8 @@
 
 %% \major{Algorithms, Combinatorics, and Optimization} 
 
-\copyrightyear{2010}
-\submitdate{August 2010} % Must be the month and year of graduation,
+\copyrightyear{2014}
+\submitdate{April 2014} % Must be the month and year of graduation,
                          % not thesis approval! As of 2010, this means
                          % this text must be May, August, or December
                          % followed by the year.
@@ -68,36 +71,47 @@
 %%    \listmajorfalse
 %%    \multivolumefalse
 
+%% Disable the table of contents
+\contentspagefalse 
+%% Disable the a list of tables
+\tablespagefalse
+%% Disable the a list of figures
+\figurespagefalse
+
 \begin{document}
 \bibliographystyle{gatech-thesis}
 %%
+
 \begin{preliminary}
-\begin{dedication}
-\null\vfil
-{\large
-\begin{center}
-To myself,\\\vspace{12pt}
-Perry H. Disdainful,\\\vspace{12pt}
-the only person worthy of my company.
-\end{center}}
-\vfil\null
-\end{dedication}
-\begin{preface}
-Theses have elements.  Isn't that nice?
-\end{preface}
-\begin{acknowledgements}
-I want to ``thank'' my committee, without whose ridiculous demands, I
-would have graduated so, so, very much faster.
-\end{acknowledgements}
+%% \begin{dedication}
+%% \null\vfil
+%% {\large
+%% \begin{center}
+%% To myself,\\\vspace{12pt}
+%% Perry H. Disdainful,\\\vspace{12pt}
+%% the only person worthy of my company.
+%% \end{center}}
+%% \vfil\null
+%% \end{dedication}
+%% \begin{preface}
+%% Theses have elements.  Isn't that nice?
+%% \end{preface}
+%% \begin{acknowledgements}
+%% I want to ``thank'' my committee, without whose ridiculous demands, I
+%% would have graduated so, so, very much faster.
+%% \end{acknowledgements}
 % print table of contents, figures and tables here.
 \contents
 % if you need a "List of Symbols or Abbreviations" look into
 % gatech-thesis-gloss.sty.
 \begin{summary}
-Why should I provide a summary?  Just read the thesis.
+  Why should I provide a summary?  Just read the thesis.
+  Anyway, this is where I will put my abstract.
 \end{summary}
 \end{preliminary}
 %%
+
+
 \chapter{Introduction}
 
 Every dissertation should have an introduction.  You might not realize
@@ -158,25 +172,30 @@ appear just before the bibliography.
 
 \begin{postliminary}
 \references
-\postfacesection{Index}{%
-%%             ... generate an index here
-%%         look into gatech-thesis-index.sty
-}
-\begin{vita}
-Perry H. Disdainful was born in an insignificant town
-whose only claim to fame is that it produced such a fine
-specimen of a researcher.
-\end{vita}
+
+%% \postfacesection{Index}{%
+%% %%             ... generate an index here
+%% %%         look into gatech-thesis-index.sty
+%% }
+%% \begin{vita}
+%% Perry H. Disdainful was born in an insignificant town
+%% whose only claim to fame is that it produced such a fine
+%% specimen of a researcher.
+%% \end{vita}
+
+%% \begin{abstract}
+%%   Haha, my thesis proposal is awesome. Please accept this!
+%%   This is the abstract that must be turned in as hard copy to the
+%%   thesis office to meet the UMI requirements. It should \emph{not} be
+%%   included when submitting your ETD. Comment out the abstract
+%%   environment before submitting. It is recommended that you simply
+%%   copy and paste the text you put in the summary environment into this
+%%   environment. The title, your name, the page count, and your
+%%   advisor's name will all be generated automatically.
+%% \end{abstract}
+
+
 \end{postliminary}
 
-\begin{abstract}
-  This is the abstract that must be turned in as hard copy to the
-  thesis office to meet the UMI requirements. It should \emph{not} be
-  included when submitting your ETD. Comment out the abstract
-  environment before submitting. It is recommended that you simply
-  copy and paste the text you put in the summary environment into this
-  environment. The title, your name, the page count, and your
-  advisor's name will all be generated automatically.
-\end{abstract}
 
 \end{document}
