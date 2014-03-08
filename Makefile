@@ -15,4 +15,4 @@ $(R).pdf: *.tex $(STY) $(FIG) $(R).bbl
 	pdflatex $(R)
 
 clean:
-	rm -f $(R).log $(R).aux $(R).bbl $(R).blg $(R).out $(R).lof $(R).lot $(R).toc
+	rm -f $(R).log *.aux $(R).bbl $(R).blg $(R).out $(R).lof $(R).lot $(R).toc
