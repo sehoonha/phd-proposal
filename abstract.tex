@@ -1,3 +1,28 @@
 \begin{summary}
-We propose a set of techniques for training a dynamic controller
+
+%% Human-in-the-loop
+
+We propose a human-in-the-loop (HITL) system to develop dynamic
+controllers for virtual characters under the guidance of a human coach.
+The user only needs to provide a primitive initial controller and high-level, 
+human-readable instructions as if coaching a human trainee.
+The virtual character interprets the provided instructions,
+accumulate the knowledge from the human coach,
+and iteratively improves its motor skills by optimizing control parameters.
+%% We introduce the ``motor tree'' as a new representation of motor skills
+%% to provide a direct mapping between high-level instructions and
+%% low-level control variables.
+To facilitate the mapping between high-level instructions and
+control variables, we introduce a new representation of motor skills,
+the ``motor tree'' which hierarchically organizes the skills from the low-level
+motions to the complex ones.
+The hierarchical structure enables flexible re-assembly and 
+efficient re-optimization by preserving the invariant features
+of motor skills.
+Further, the optimization process is accelerated by several techniques
+such as utilizing the failed previous trials or 
+exploiting the idling time of optimizer.
+With the propose framework, the human coach can design complex dynamic controller
+for virtual characters intuitively and interactively.
+
 \end{summary}
