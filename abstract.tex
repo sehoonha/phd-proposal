@@ -1,18 +1,22 @@
 \begin{summary}
 
-We introduce a set of techniques to develop 
-dynamic controllers for highly dynamic motor skills of humanoid characters,
-including jumping, rolling, vaulting, and landing.
+As technology advances in motor controllers, highly dynamic motions
+have been great milestones for both virtual and real humanoid characters.
+However, developing controllers for dynamic motor skills remains a challenging
+problem which usually requires substantial amount of design efforts
+due to its complex behaviors.
+In this dissertation, we introduce a set of techniques to expedite the
+process of controller design for various dynamic motor skills,
+such as jumping, rolling, vaulting, and landing.
 First, we develop an online algorithm to control falling and landing motions 
-from a wide range of heights and initial speeds, 
-continuously roll on the ground, and get back on its feet.
+from a wide range of heights and initial speeds. 
 To avoid the large stress on the joints, we plan momentum trajectories 
-using the approximated inertia model and feedback-based contact forces.
+using the approximated inertia model and feedback-based contact force planning.
 Second, we propose an iterative training framework to train dynamic 
 controllers for virtual characters under the guidance of a human coach.
 The user only needs to provide a primitive initial controller and high-level, 
 human-readable instructions as if coaching a human trainee.
-The virtual character interprets the provided instructions,
+Then the virtual character interprets the provided instructions,
 accumulate the knowledge from the human coach,
 and iteratively improves its motor skills by optimizing control parameters.
 Further, the optimization process is accelerated by 
