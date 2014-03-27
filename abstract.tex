@@ -1,19 +1,25 @@
 \begin{summary}
 
-As technology advances in motor controllers, highly dynamic motions
-have been great milestones for both virtual and real humanoid characters.
-However, developing controllers for dynamic motor skills remains a challenging
+As technology of computer animation and robotics advances,
+controlling highly dynamic motions
+has been great milestones for both virtual and real humanoid characters.
+However, developing controllers for dynamic motor skills is yet a challenging
 problem which usually requires substantial amount of design efforts
-due to its complex behaviors.
+due to its complexity.
 In this dissertation, we introduce a set of techniques to expedite the
 process of controller design for various dynamic motor skills,
 such as jumping, rolling, vaulting, and landing.
 First, we develop an online algorithm to control falling and landing motions 
-from a wide range of heights and initial speeds. 
-To avoid the large stress on the joints, we plan momentum trajectories 
-using the approximated inertia model and feedback-based contact force planning.
-Second, we propose an iterative training framework to train dynamic 
-controllers for virtual characters under the guidance of a human coach.
+from a wide range of heights and initial speeds,
+which is an essential motor skill for dynamic motions. 
+We demonstrate that simple momentum planning with the proxy model of inertia 
+and feedback-based rules can generate the natural landing motions
+without large stresses on the joints.
+%% To avoid the large stress on the joints, we plan momentum trajectories 
+%% using the approximated inertia model and simple feedback-based rules.
+Second, we propose an iterative training framework to develop dynamic 
+controllers for virtual characters under the guidance of a human coach,
+which greatly simplifies the design process.
 The user only needs to provide a primitive initial controller and high-level, 
 human-readable instructions as if coaching a human trainee.
 Then the virtual character interprets the provided instructions,
