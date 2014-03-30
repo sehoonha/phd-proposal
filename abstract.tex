@@ -1,35 +1,71 @@
 \begin{summary}
+  As technology of computer animation and robotics advances,
+  controlling highly dynamic motions
+  has been great milestones for both virtual and real humanoid characters.
+  However, developing controllers for dynamic motor skills is yet a challenging
+  problem which usually requires substantial amount of design efforts and
+  optimization time due to its complexity.
+  In this dissertation, we introduce a set of techniques to expedite
+  the optimization process of dynamic controllers for various dynamic motor 
+  skills, such as jumping, rolling, vaulting, and landing.
 
-As technology of computer animation and robotics advances,
-controlling highly dynamic motions
-has been great milestones for both virtual and real humanoid characters.
-However, developing controllers for dynamic motor skills is yet a challenging
-problem which usually requires substantial amount of design efforts
-due to its complexity.
-In this dissertation, we introduce a set of techniques to expedite the
-process of controller design for various dynamic motor skills,
-such as jumping, rolling, vaulting, and landing.
-First, we develop an online algorithm to control falling and landing motions 
-from a wide range of heights and initial speeds,
-which is an essential motor skill for dynamic motions. 
-We demonstrate that simple momentum planning with the proxy model of inertia 
-and feedback-based rules can generate the natural landing motions
-without large stresses on the joints.
-%% To avoid the large stress on the joints, we plan momentum trajectories 
-%% using the approximated inertia model and simple feedback-based rules.
-Second, we propose an iterative training framework to develop dynamic 
-controllers for virtual characters under the guidance of a human coach,
-which greatly simplifies the design process.
-The user only needs to provide a primitive initial controller and high-level, 
-human-readable instructions as if coaching a human trainee.
-Then the virtual character interprets the provided instructions,
-accumulate the knowledge from the human coach,
-and iteratively improves its motor skills by optimizing control parameters.
-Further, the optimization process is accelerated by 
-exploiting the previous history of failures and 
-continuously solving a parameterized objective function.
-By incorporating the propose techniques, complex dynamic motor skills
-can be intuitively and interactively generated without any reference motion.
+  First, we develop an online algorithm to control falling and landing motions 
+  from a wide range of heights and initial speeds,
+  which is an essential motor skill to ensure the safety of human and robots.
+  We demonstrate that simple momentum planning with the proxy model of inertia 
+  and feedback-based rules can generate the natural landing motions
+  without large stresses on the joints.
+  Further, we propose an optimization algorithm for multi-contact falling
+  motions of a real robot for minimizing the damage and protecting the 
+  important body parts.
+  Unlikely the existing techniques which usually consider the contacts as
+  invariant features, we searches over a sequence of contacts to find
+  the best falling motion.
+
+  We also show that the sampling-based optimization of dynamic controllers
+  can be accelerated by our new technique,
+  Covariance Matrix Adaptation with Classification (CMA-C), 
+  which utilizes failed simulations to approximate an infeasible region.
+  In additition, we introduce a new fast optimization algorithm 
+  for solving a parameterized objective function.
+  Inspired by Schmidt's Variability Practice Hypothesis, 
+  our algorithm simultaneously solves a continuous set of optimizers 
+  for parameterized motions at the interactive rate 
+  by sharing the simulation samples across the parameterized goals.
+
+  By incorporating the propose techniques, we can produce highly-dynamic motions 
+  of virtual characters and real robots with minimal optimization time.
+
+  %% As technology of computer animation and robotics advances,
+  %% controlling highly dynamic motions
+  %% has been great milestones for both virtual and real humanoid characters.
+  %% However, developing controllers for dynamic motor skills is yet a challenging
+  %% problem which usually requires substantial amount of design efforts
+  %% due to its complexity.
+  %% In this dissertation, we introduce a set of techniques to expedite the
+  %% process of controller design for various dynamic motor skills,
+  %% such as jumping, rolling, vaulting, and landing.
+  %% First, we develop an online algorithm to control falling and landing motions 
+  %% from a wide range of heights and initial speeds,
+  %% which is an essential motor skill for dynamic motions. 
+  %% We demonstrate that simple momentum planning with the proxy model of inertia 
+  %% and feedback-based rules can generate the natural landing motions
+  %% without large stresses on the joints.
+  %% %% To avoid the large stress on the joints, we plan momentum trajectories 
+  %% %% using the approximated inertia model and simple feedback-based rules.
+  %% Second, we propose an iterative training framework to develop dynamic 
+  %% controllers for virtual characters under the guidance of a human coach,
+  %% which greatly simplifies the design process.
+  %% The user only needs to provide a primitive initial controller and high-level, 
+  %% human-readable instructions as if coaching a human trainee.
+  %% Then the virtual character interprets the provided instructions,
+  %% accumulate the knowledge from the human coach,
+  %% and iteratively improves its motor skills by optimizing control parameters.
+  %% Further, the optimization process is accelerated by 
+  %% exploiting the previous history of failures and 
+  %% continuously solving a parameterized objective function.
+  %% By incorporating the propose techniques, complex dynamic motor skills
+  %% can be intuitively and interactively generated without any reference motion.
 
 
   %% %% Human-in-the-loop
