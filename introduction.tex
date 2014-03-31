@@ -6,7 +6,7 @@ A wide variety of athletic, such as acrobatic or free running, demonstrate the
 efficient and artistic movements which involve the abrupt changes of momentum
 and contacts.
 Furthermore, these motor skills are transferred to virtual characters 
-in animation and game to express the intention of artists.
+in animation and game to express the intention of artists and designers.
 Robotics, another application of dynamic controllers, also started 
 to incorporate the agile movements and demonstrated
 running, jumping, and landing motions with real hardwares.
@@ -18,41 +18,125 @@ and even damages at the impact moment.
 Furthermore, non-linear and discontinuous behaviors of motions
 makes the optimization of the controllers hard to be solved efficiently.
 
-Learning a dynamic motor skill, such as a precision jump in Parkour or
-a flip in gymanstics usually requires an iterative training process
-with interactive coaching and repetitive practices.
-Even though details of the learning process remain unknown,
-Pitts and Posner \cite{fitts:1967:hp} hypothesize the three stages
-of the skill acquisition process: the cognitive stage, 
-the associative stage, and the autonomous stage.
-The cognitive stage is when the trainee gathers information about the new
-skill or receives the feedback on the existing skills from the coach
-via instructions.
-In the associative stage, the learner translates the declarative knowledge
-to functional movements after an unspecified amount of practice and few mistakes.
-In the autonomous stage, the skill has become almost automatic or habitual 
-so that it can be executed with minimal amount of efforts.
-A key of this hypothesis is an iterative process between cognitive learning
-and physical training.
-With this intuition, we propose a human-in-the-loop optimization 
-framework to design dynamic controllers for virtual characters,
-which consists of the ``coaching'' stage for receiving user instructions 
-and the ``practicing'' stage for optimizing control parameters.
+In computer animation and robotics community, different categories
+of approaches have been applied to control virtual and real characters.
+For generating a sequence of dynamic motion, two approaches has been
+frequently applied to control problems: tracking the reference motion, or 
+solving the space-time optimization problem under the physics constraints.
+Both methods demonstrated that a variety of motions can be achieved 
+by solving the optimization problem which considers the entire sequence
+of motions.
+However, the optimization over the entire motion usually requires
+a long optimization time and further falls short of abilities
+for adapting the motion to new environments.
+On the other hand, abstract model based controllers can be interactively
+adapted to a wide range of situations by capturing the essential features
+of the dynamic motion.
+This approach shows the robust control over various motions,
+such as walking, balancing, and falling, but hard to consider the
+very detailed features such as the exact boundary of characters 
+or a sequence of contacts.
+A sampling-based optimization for the parameterized controllers has proven
+effective for optimizing the motion within a realistic simulation environment,
+but it also takes a long time to be optimizzed, especially when the objective
+function is parameterized or concatenated for long term goals.
 
-In fact, the iterative training system can greatly simplify the design
-process of dynamic controllers by exploiting the same mechanism as human.
-Moreover, since our system incrementally develops the controller by
-accumulating human knowledge, the existing controllers can be easily
-adapted, extended, or concatenated for new situations.
-However, several new research questions arise when we formalize the
-elusive principles of human learning into mathematical models for
-designing physics-based controllers, such as mapping the human instruction
-to low-level control variables or representing the accumulated knowledge
-on motor skills.
-To resolve the issues, we introduce a new hierarchical representation 
-of motor skills, the ``motor tree'', to simulate the phenomenon of
-skill abstraction and accumulation. 
-To increase the responsiveness, the motor tree is optimized at interactive
-rates by exploiting the previous failure history or idle time of the system.
+In this proposal, we tackle the problem of controlling safe falling 
+and landing motion for virtual characters and robots, which is a fundamental
+motor skill because highly dynamic motions involve the abrupt changes
+of contacts and can cause huge damages on the body parts.
+While absorbing the shock at the impact, a successful landing controller 
+also should be able to maintain readiness for the next action by managing
+the momentum properly.
+For the virtual character, we introduce a fast and robust optimization 
+algorithm for controlling falling and landing motions of virtual
+characters from a wide rage of heights and initial speeds.
+while reducing joint stress.
+Further, we tackle a safe falling of a robot by planning a sequence of
+multiple contacts, which endures larger external perturbatations comparing to
+the existing methods.
+
+Further, we propose new algorithms for accelerating sampling-based 
+optimization methods, which is popular for optimizing dynamic controllers
+due to its robustness.
+Especially, we assume two difficult optimization problems,
+multiple constraints and parameterized objective functions,
+which usually require longer computational time.
+For the highly constrained problem, we introduce a new optimization algorithm, 
+Covariance Matrix Adaptation with Classification (CMA-C), 
+which efficiently solves the constrained problem by estimating
+the infeasible region from bad samples.
+In addition, instead of solving the parameterized goals sequentially,
+we solve them simultaneously by directly optimizing a mean segment
+from the shared simulation samples.
+Since the mean segment is confined by an explicit equation,
+we can produce a continuous set of optimizers which has
+a coherent style over the solutions.
+
+In this proposal, we introduce a set of techniques to expedite
+the optimization process of dynamic controllers for various dynamic motor 
+skills, such as jumping, rolling, vaulting, and landing.
+
+\section{Organizations}
+The rest of sections are organized as follows:
+
+\begin{itemize}
+\item 
+  \textbf{Optimization of Falling and Landing motions for characters}
+  In this section, ..
+\item 
+  \textbf{Optimization of Multi-contact Falling sequences for robots}
+  In this section, ..
+\item 
+  \textbf{Fast sampling-based optimization based on failed samples}
+  In this section, ..
+\item 
+  \textbf{Fast Optimization of Parameterized Objective Goals}
+  In this section, ..
+\end{itemize}
+
+%% \subsection{Interactive Optimization of Falling and Landing for character animation}
+%% In this section, ..
+
+%% \subsection{Optimization of Multi-contact Falling sequence for robots}
+%% In this section, ..
+
+
+%% Learning a dynamic motor skill, such as a precision jump in Parkour or
+%% a flip in gymanstics usually requires an iterative training process
+%% with interactive coaching and repetitive practices.
+%% Even though details of the learning process remain unknown,
+%% Pitts and Posner \cite{fitts:1967:hp} hypothesize the three stages
+%% of the skill acquisition process: the cognitive stage, 
+%% the associative stage, and the autonomous stage.
+%% The cognitive stage is when the trainee gathers information about the new
+%% skill or receives the feedback on the existing skills from the coach
+%% via instructions.
+%% In the associative stage, the learner translates the declarative knowledge
+%% to functional movements after an unspecified amount of practice and few mistakes.
+%% In the autonomous stage, the skill has become almost automatic or habitual 
+%% so that it can be executed with minimal amount of efforts.
+%% A key of this hypothesis is an iterative process between cognitive learning
+%% and physical training.
+%% With this intuition, we propose a human-in-the-loop optimization 
+%% framework to design dynamic controllers for virtual characters,
+%% which consists of the ``coaching'' stage for receiving user instructions 
+%% and the ``practicing'' stage for optimizing control parameters.
+
+%% In fact, the iterative training system can greatly simplify the design
+%% process of dynamic controllers by exploiting the same mechanism as human.
+%% Moreover, since our system incrementally develops the controller by
+%% accumulating human knowledge, the existing controllers can be easily
+%% adapted, extended, or concatenated for new situations.
+%% However, several new research questions arise when we formalize the
+%% elusive principles of human learning into mathematical models for
+%% designing physics-based controllers, such as mapping the human instruction
+%% to low-level control variables or representing the accumulated knowledge
+%% on motor skills.
+%% To resolve the issues, we introduce a new hierarchical representation 
+%% of motor skills, the ``motor tree'', to simulate the phenomenon of
+%% skill abstraction and accumulation. 
+%% To increase the responsiveness, the motor tree is optimized at interactive
+%% rates by exploiting the previous failure history or idle time of the system.
 
 %% In this proposal, we introduce a framework and related algorithm to simulate the learning process of human.
