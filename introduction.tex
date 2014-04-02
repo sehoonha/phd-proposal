@@ -3,12 +3,12 @@
 %% \cite{fitts:1967:hp}
 
 Performing highly dynamic motions with agility and grace has been
-one of the greatest challenges in sports, computer animation, and robotic.
-A wide variety of athletic, such as acrobatic or free running, demonstrate the
-efficient and artistic movements which involve the abrupt changes of momentum
+one of the greatest challenges in sports, computer animation, and robotics.
+A wide variety of athletics, such as acrobatics or free running, demonstrate the
+efficient and artistic movements that involve abrupt changes of momentum
 and contacts.
 Furthermore, these motor skills are transferred to virtual characters 
-in animation and game to express the intention of designers
+in animations and games to express the intention of designers
 and react to user interactions.
 Robotics, another application of dynamic controllers, also started 
 to tackle the agile movements and demonstrated
@@ -16,33 +16,32 @@ running, jumping, and landing motions with real hardwares.
 Despite the recent progress, 
 learning dynamic motor skills still remains a very difficult
 problem because it needs to execute the task with great agility, 
-ensure the safety, and demonstrate the self-expression.
+ensure safety, and demonstrate self-expression.
 
 In fact, developing dynamic controllers for virtual characters and
-real robots can be considered as related problems
+real robots can be considered related problems,
 which can benefit each other.
 Since the control problems in two domains have shared properties,
-such as non-linearity, high-dimension, and disconstiuity,
+such as non-linearity, high-dimension, and discontinuity,
 an algorithm developed in one domain can be transferred 
 to the other domain.
 However, control of real robots is more constrained
-due to the sensor uncertainty and hardware limitations which 
-usually requires more robustness than control of virtual
-characters.
+due to the sensor uncertainty and hardware limitations, which 
+usually require more robustness than control of virtual characters.
 Therefore, developing an algorithm in virtual environment to prove its
 full capability and transferring it to real hardwares would be
-a nice research direction, which is adopted in this proposal.
+a promising research direction, which is adopted in this proposal.
 
-In computer animation and robotics community, various categories
+In the computer animation and robotics community, various categories
 of algorithms have been applied to control virtual and real characters.
-For generating a sequence of dynamic motion, two approaches has been
+For generating a sequence of dynamic motion, two approaches have been
 frequently applied to control problems: tracking the reference motion, or 
-solving the space-time optimization problem under the physics constraints.
+solving the space-time optimization problem under physics constraints.
 Both methods demonstrated that a variety of motions can be achieved 
 by solving the optimization problem which considers the entire sequence
 of motions.
 However, the optimization over the entire motion usually requires
-a long optimization time and further falls short of abilities
+a long optimization time and also falls short of abilities
 for adapting the motion to new environments.
 On the other hand, abstract model based controllers can be interactively
 adapted to a wide range of situations by capturing the essential features
@@ -53,18 +52,17 @@ very detailed features such as the exact boundary of characters
 or a sequence of contacts.
 A sampling-based optimization for the parameterized controllers has proven
 effective for optimizing the motion within a realistic simulation environment,
-but it also takes a long time to be optimizzed, especially when the objective
-function is parameterized or concatenated for long term goals.
-
-
+but it also takes a long time to be optimized, especially when the target
+motion is parameterized or concatenated.
+Instead, we want to introduce faster algorithms for developing
+dynamic controllers, which also can handle a wide range of situations.
 
 In this proposal, we introduce a set of techniques to expedite
 the learning process of dynamic controllers for various dynamic motor 
 skills. We first introduce a natural and safe landing controller for
 the characters and robots, which is essential for highly dynamic motions.
 After that, we propose an interactive syste to design dynamic controllers
-for humanoids. The rest of sections are organized as follows:
-
+for humanoids. The rest of the sections are organized as follows:
 
 \section{Organizations}
 

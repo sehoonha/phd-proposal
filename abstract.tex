@@ -1,31 +1,31 @@
 \begin{summary}
-  As technology of computer animation and robotics advances,
+  As the technology of computer animation and robotics advances,
   controlling highly dynamic motions
   has been a great milestone for both virtual and real humanoid characters.
-  However, developing controllers for dynamic motor skills is yet a challenging
-  problem which usually requires substantial amount of design efforts and
-  optimization time due to its complexity.
+  However, developing controllers for dynamic motor skills is still 
+  a challenging problem, which usually requires substantial amount of 
+  design effort and optimization time due to its complexity.
   %% In this dissertation, we introduce a set of techniques to expedite
   %% the optimization process of dynamic controllers for various dynamic motor 
   %% skills, such as jumping, rolling, vaulting, and landing.
-  In this proposal, we introduce a set of technique for training various
-  highly dynamic motor skills, such as jumping, rolling, vaulting, and landing,
-  to virtual characters and real robots.
+  In this proposal, we introduce a set of techniques for designing
+  controllers for various dynamic motor skills, such as jumping, rolling, 
+  vaulting, and landing, for virtual characters and real robots.
 
   First, we introduce new algorithms to generate falling and landing motions,
-  which are essential motor skills to ensure the safety of human and robots.
+  which are essential motor skills to ensure the safety of humans and robots.
   We propose an online algorithm to control falling and landing motions 
   of virtual characters from a wide range of heights and initial speeds,
   which can potentailly cause huge damages.
   With the suggested algorithm, we demonstrate that simple momentum planning 
   with the proxy model of inertia and feedback-based rules can generate 
   the natural landing motions without large stresses on the joints.
-  Inspired by falling of a virtual character, 
+  Inspired by the falling control of a virtual character, 
   we develop an optimization algorithm for multi-contact falling
   motions of a real robot for minimizing the damage at the impact.
-  Unlikely the existing techniques which usually consider the desired contacts 
-  as invariant features, we searches over a sequence of contacts to find
-  the best falling motion which can handle a wider range of situations. 
+  Unlike the existing techniques that usually consider the desired contacts 
+  as invariant features, we search over a sequence of contacts to find
+  the best falling motion that can handle a wider range of situations. 
 
   %% We also show that the sampling-based optimization of dynamic controllers
   %% can be accelerated by our new technique,
@@ -55,11 +55,11 @@
   of motor skills.
   Further, the optimization process is accelerated by 
   utilizing the failed previous trials.
-  Using our proposed system, we also train a real robot to perform
-  dynamic motor skills such as rolling under enough consideration 
-  on noises over control and simulation.
+  By considering noise and uncerntainty from real hardwares,
+  we also train a real robot to perform dynamic motor skills 
+  such as rolling using our proposed system.
 
-  By incorporating the propose techniques, we can produce highly-dynamic motions 
+  By incorporating the proposed techniques, we can produce highly-dynamic motions 
   of virtual characters and real robots.
 
   %% As technology of computer animation and robotics advances,
