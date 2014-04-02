@@ -49,6 +49,21 @@ paramount importance for designing landing control algorithms capable
 of handling arbitrary scenarios
 \cite{Edwardes:2009:TPF,HLJ:2011:URL}. 
 
+\section{Sampling-based Optimization}
+In character animation, a sampling-based method, 
+Covariance Matrix Adaption Evolution Strategy (CMA-ES) 
+\cite{Hansen:2004:CMA}, has been
+frequently applied to discontinuous control problems, such as biped
+locomotion \cite{Wang:2009:OWC,Wang:2010:OWC,Wang:2012:OLC},
+parkour-style stunts\cite{Liu:2012:TRC,Ha:2014:ITD}, or swimming
+\cite{Tan:2011:ASC}.  To compensate the expensive cost of
+sampling-based algorithm, different approaches have been proposed,
+including exploiting the domain knowledge
+\cite{Wang:2009:OWC,Wang:2010:OWC,Wang:2012:OLC} or shortening the
+problem horizons \cite{Sok:2007:SBB}. Based on the previous success
+of CMA-ES, we developed a new sampling-based algorithm resembles the
+evolution process of distribution
+
 \section{Human-in-the-loop Optimization}
 
 Without human guidance, fully automated optimization algorithms
@@ -71,6 +86,26 @@ systems, we develop new optimization algorithms that exploit the nature of
 HITL computation paradigm.
 
 
-\section{Learning by Demonstration}
+\section{Learning from Demonstration}
+
+Learning from demonstration (LfD), also known as programming by demonstration,
+has been an attractive paradigm for training motor skills to robots.
+In this paradigm, a set of examples are provided by human teachers,
+and an optimal policy is generated from such examples.
+Since the early work of Kuniyoshi \etal \cite{kuniyoshi:1989:TBS},
+it has been proven to be effective for training motor skills in
+numerous task domains, including object manipulation 
+\cite{Atkeson:1997:RLD,Calinon:2007:LRG,Ueda:2010:MNH},
+navigation \cite{Konidaris:2011:RLD}, 
+full-body motion generation \cite{Kulic:2011:ILF}, and so on.
+To increase the robustness, the learned motor skills are further 
+generalized using machine learning techniques,
+such as gausian mixture model \cite{Calinon:2007:LRG} or
+motion primitives \cite{Pastor:2009:LGM}.
+However, dynamic motor skills of humanoids have
+not been fully examined yet, except the only few works on the
+locomotion \cite{Nakanishi:2004:LDA}, which is our target domain
+in this proposal.
+
 
 
