@@ -2,7 +2,52 @@
 
 \section{Control of Highly Dynamic Motions}
 
+Designing controllers for physically simulated biped characters
+is a challenging problem due to its nonlinear dynamics and
+under-actuated control.
+Hodgins \etal \cite{Hodgins:1995:AHA,Wooten:1998:Phd} showed that 
+carefully crafted control algorithms can simulate highly athletic 
+motions, including diving, tumbling, vaulting, and leaping. 
+Faloutsos \etal \cite{Faloutsos:2001:CCF} composed primitive 
+controllers to simulate more complex motor skills, 
+such as a kip-up move or a dive down stairs. 
+Liu \etal \cite{Liu:2010:SCM} successfully tracked
+contact-rich mocap sequences using a sampling-based approach. 
+They showed that vigorous motions with complex contacts, such as a
+dive-roll or a kip-up move, can be dynamically simulated, provided
+full body mocap sequences as desired trajectories. 
+Other techniques directly edit ballistic motion sequences
+under the constraints imposed by conservation of momentum
+\cite{Majkowska:2007:FPM,Sok:2010:EDH}, or apply a hybrid method for
+synthesizing dynamic response to perturbation in the environment
+\cite{Shapiro:2003:HCI}.  If the contact positions and timing are
+known, spacetime optimization techniques can also generate compelling
+dynamic motions
+\cite{Liu:2002:SCD,Fang:2003:ESP,Safonova:2004:SPR,Sulejmanpavic:2004:APB}.
+In this work, we take the approach of physical simulation, but we seek
+for a more general and robust control algorithm such that the
+controller can operate under a wide range of initial conditions and
+allow for runtime perturbations. Furthermore, our controller does not
+depend on any pre-scripted or captured motion trajectories.
+
 \section{Control of Safe Falling Motions}
+
+Safe falling and landing for bipeds is a topic that
+receives broad attention in many disciplines. Robotic researchers are
+interested in safe falling from standing height for the purpose of
+reducing damages on robots due to accidental falls. Previous work has
+applied machine learning techniques to predict falling
+\cite{Kalyanakrishnan:2011:LPH}, as well as using an abstract model to
+control a safe fall
+\cite{Fujiwara:2002:FMC,Fujiwara:2007:OPF,Yun:2009:SFH}. In contrast
+to the related work in robotics, our work focuses on falls from higher
+places. In those cases, control strategies during long airborne phase
+become critical for safe landing. We draw inspiration from
+kinesiology literature and sport practitioners. In particular, the
+techniques developed in freerunning and parkour community are of
+paramount importance for designing landing control algorithms capable
+of handling arbitrary scenarios
+\cite{Edwardes:2009:TPF,HLJ:2011:URL}. 
 
 \section{Human-in-the-loop Optimization}
 

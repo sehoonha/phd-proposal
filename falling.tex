@@ -1,6 +1,16 @@
 \chapter{Optimization of \protect\\ Falling and Landing Motions}
 
-\section{Falling and Landing Motion Control for Character Animation}
+This section descries algorithm for generating natural and safe
+falling and landing motions of virtual and real humanoids.
+First, we develop an online controller that 
+allows the virtual character to fall from a wide range of heights
+and initial speeds, continuously roll on the ground, and get back
+on its feet, without inducing large stress on joints at any moment.
+For a real robot, we investigate a scenario of safe falling 
+strategy for large external perturbations, which rapidly
+plans a sequence of contacts to reduce the maximum impact.
+
+\section{Falling and Landing Motion Control for A Virtual Character}
 
 \subsection{Overview}
 
