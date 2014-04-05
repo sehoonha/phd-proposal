@@ -45,4 +45,23 @@ jumps, monkey vaults, drop-and-rolls, and wall-backflips
 
 \subsection{Related Work}
 
+Learning from demonstration (LfD), also known as programming by demonstration,
+has been an attractive paradigm for training motor skills to robots.
+In this paradigm, a set of examples are provided by human teachers,
+and an optimal policy is generated from such examples.
+Since the early work of Kuniyoshi \etal \cite{kuniyoshi:1989:TBS},
+it has been proven to be effective for training motor skills in
+numerous task domains, including object manipulation 
+\cite{Atkeson:1997:RLD,Calinon:2007:LRG,Ueda:2010:MNH},
+navigation \cite{Konidaris:2011:RLD}, 
+full-body motion generation \cite{Kulic:2011:ILF}, and so on.
+To increase the robustness, the learned motor skills are further 
+generalized using machine learning techniques,
+such as gausian mixture model \cite{Calinon:2007:LRG} or
+motion primitives \cite{Pastor:2009:LGM}.
+However, dynamic motor skills of humanoids have
+not been fully examined yet, except the only few works on the
+locomotion \cite{Nakanishi:2004:LDA}, which is our target domain
+in this proposal.
+
 \subsection{System Overview}
