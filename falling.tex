@@ -97,7 +97,7 @@ algorithms capable of handling arbitrary scenarios
 
 \subsection{Algorithm}
 
-\paragraph{Optimization for a single scenario}
+\paragraph{Optimal control for a single scenario}
 
 As the simplified version of the problem, we first develop the falling
 controll for a single scenario, which starts from the given initial 
@@ -149,12 +149,71 @@ The value of each control dimension will be determined by solving
 the optimization problem with the standard technique, like CMA.
 
 
-\paragraph{Policy generation for multiple scenarios}
+\paragraph{Optimal policy for multiple scenarios}
 
-\subsection{Results}
+Even if we have an optimal motion for a single scenario,
+it is not sufficient for the protection of real robots.
+First, the state of the robot is keep changing due to its original
+task (i.e. locomotion or manipulation), so we cannot assume
+the fixed initial state.
+In addition, we may not know the exact information on the current
+situation, such as the amount of external forces, because sensors
+provides us only limited amount of data that currupted by noise.
+Therefore, the optimal motion for the single scenario is not likely 
+to be optimal for other situations, and further cause the severe damages
+on the body.
+To overcome this issue, we need to generate the general policy which 
+can react to the sensor data and update the falling motion of the robot.
 
-\paragraph{Environment Setup}
+However, generating an optimal policy is a difficult problem which
+requires a lot of samples.
+One promising approach is reinforcement learning which optimizes
+the best action for the current state by incorporating the long-term
+rewards, which is proven to be effective both in computer graphics
+\cite{Coros:2009:RTC} and robotics \cite{Morimoto:2004:SRL}.
+However, reinforcment learning requires us to select the proper set
+of state variables which is still challenging.
+If the number of state variables are too many, 
+the number of state becomes exponential.
+In opposite case, the state variables does not well reflect the 
+details of the full-scale simulation.
+One possible direction is to use an abstract model such as the 
+inverted pendulum (IP) to represent the state in reinforcement learning,
+which needs the further investigation and experiments.
 
-\paragraph{Preliminary Results}
+\subsection{Expected Results}
+
+\begin{figure}[htbp]
+\center
+  \includegraphics[width=4.2in]{images/falling2_robovies}
+  \caption{Real and virtual robovies (Left and Right)} 
+ \label{fig:robovies}
+\end{figure}
+
+In this project, we try to control safe falling of virtual and real robots
+which minimizes the damages on the body parts and joints.
+As a testbed, we select a Robovie-X Standard \cite{Robovie} as a target robot
+(\figref{robovies}).
+A robovie has 17 Degrees of Freedom (Head: 1, Arm: 6, leg 10) 
+that are operated by VS-S092J servo motors and a gyro/acceleration sensor board.
+The control of robovie is done by their own software, RobovieMaker, 
+which takes keyframed trajectories as inputs.
+However, we have a plan to change the control framework using Arduino 
+for more flexible control.
+Moreover, we prepare the virtual model of the robovie from the CAD model,
+which can be simulated in Dart simulator \cite{Dart} (\figref{robovies}).
+Then the simulation parameters such as torque limit or maximum speeds are 
+specified from the specification of servos.
+
+We want to generate a robust falling controller which can handle
+a wide range of initial states and external perturbations.
+It may include the different state of the robot, different environments, 
+and different directions/strengths of pushes.
+For all cases, the damage should be minimized which can be verified by 
+analyzing the simulation data or the motion captured data of robots.
+Further, we will experiment the objective function with user-specified constraints, 
+such as "head should be protected" and see how the strategy will be changed.
+
+
 
 
