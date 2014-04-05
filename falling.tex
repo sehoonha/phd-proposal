@@ -11,6 +11,15 @@ perturbations by executing breakfall techniques.
 
 \section{Prior Work: Falling and Landing Motion Control for Character Animation}
 
+\begin{figure}[htbp]
+\center
+  \includegraphics[width=\linewidth]{images/falling1_teaser}
+  \caption{A simulated character lands on the roof of a car, 
+    leaps forward, dive-rolls on the sidewalk, 
+    and gets back on its feet, all in one continuous motion.}
+ \label{fig:landingOverview}
+\end{figure}
+
 In our prior work \cite{Ha:2012:FAL}, 
 we introduce a new method to generate agile and natural human landing
 motions in real-time via physical simulation without using any mocap
@@ -34,15 +43,6 @@ conditions with different falling heights, orientations, and linear
 and angular velocities. Simulated results show that our algorithm can
 effectively create realistic action sequences comparable to real world
 footage of experienced freerunners.
-
-\begin{figure}[htbp]
-\center
-  \includegraphics[width=\linewidth]{images/falling1_teaser}
-  \caption{A simulated character lands on the roof of a car, 
-    leaps forward, dive-rolls on the sidewalk, 
-    and gets back on its feet, all in one continuous motion.}
- \label{fig:landingOverview}
-\end{figure}
 
 
 \section{Multi-contacts Falling Motion Control for a Humanoid Robot}
@@ -111,6 +111,15 @@ Covariance Matrix Adaptation (CMA) \cite{Hansen:2004:CMA}).
 After solving one instance of the scenarios, we can use the solution
 as the guidance for the rest of the scenarios.
 
+\begin{figure}[htbp]
+\center
+  \includegraphics[width=\linewidth]{images/falling2_result}
+  \caption{Optimized falling motions with linear joint trajectories (Top)
+    and bezier trajectories (Bottom)}
+
+ \label{fig:robotFalling}
+\end{figure}
+
 However, finding the proper parameterization of the controller
 is a very difficult problem which usually requires a lot of prior knowledge.
 In fact, there exist numerous control options in robotics, such as
@@ -124,7 +133,7 @@ with linear segments and bezier curves, which the latter has four times
 more degrees of freedom than the former.
 The optimization indicates that the bezier curve gives us 
 much better results, which is one third of maximum impact
-comparing to the linear control (Figure ??).
+comparing to the linear control (\figref{robotFalling}).
 
 Therefore, our short term goal is finding the proper parameterization
 of the controller.
