@@ -1,12 +1,48 @@
 \chapter{Human-guided iterative training \protect\\ of dynamic motions}
 Resembles learning by demonstration,
 
-\section{System Overview}
-coaching and training
+\section{Prior Work: Iterative Training Of Dynamic Skills Inspired By Human Coaching Techniques}
 
-\section{Controller}
-Our controller produces a torque
+In our prior work \cite{Ha:2014:ITD},
+we introduce an intuitive and interactive framework for developing 
+dynamic controllers inspired by how humans learn dynamic motor
+skills through progressive process of coaching and practices. 
+The user only needs to provide a primitive initial controller and
+high-level, human-readable instructions as if
+she is coaching a human trainee, while the character has the ability
+to interpret the abstract instructions, accumulate the knowledge from
+the coach, and improve its skill iteratively. We introduce ``control
+rigs'' as an intermediate layer of control module to facilitate the
+mapping between high-level instructions and low-level control
+variables. Control rigs also utilize the human coach's knowledge to
+reduce the search space for control optimization. In addition, we
+develop a new sampling-based optimization method, Covariance Matrix
+Adaptation with Classification (CMA-C), to efficiently compute control
+rig parameters. Based on the observation of human ability to ``learn
+from failure'', CMA-C utilizes the failed simulation trials to
+approximate an infeasible region in the space of control rig
+parameters, resulting a faster convergence for the CMA
+optimization. 
+Without using motion trajectories, or tuning any parameters,
+We demonstrate the design process of complex dynamic
+controllers using our framework, including precision jumps, turnaround
+jumps, monkey vaults, drop-and-rolls, and wall-backflips 
+(\figref{training1_teaser}).
 
-\section{Instruction}
-our instruction are following:
 
+\begin{figure}[htbp]
+\center
+  \includegraphics[width=\linewidth]{images/training1_teaser}
+  \caption{Monkey vault (Top) and wall-backflip (Bottom).}
+ \label{fig:training1_teaser}
+\end{figure}
+
+
+\section{Iterative Training Of Dynamic Skills for Humanoid Robots}
+
+
+\subsection{Problem Description}
+
+\subsection{Related Work}
+
+\subsection{System Overview}
