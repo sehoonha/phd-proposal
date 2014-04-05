@@ -1,22 +1,25 @@
 \chapter{Optimization of \protect\\ Falling and Landing Motions}
 
-This section descries algorithm for generating natural and safe
+This section describes algorithms for generating natural and safe
 falling and landing motions of virtual and real humanoids.
-First, we develop an online algorithm for simulated characters
-to generate natural falling and landing motions from different 
-heights and initial conditions, while absorbing impact.
+In the prior project, we developed an online algorithm for simulated 
+characters to generate natural falling and landing motions from 
+different heights and initial conditions, while absorbing impact.
 In addition, we investigate a scenario of safe falling 
 strategy for robots to protect themselves from large external 
 perturbations by executing breakfall techniques.
 
-\section{Falling and Landing Motion Control for A Virtual Character}
+\section{Prior Work: Falling and Landing Motion Control for Character Animation}
 
-We introduce a new method to generate agile and natural human landing
+In our prior work \cite{Ha:2012:FAL}, 
+we introduce a new method to generate agile and natural human landing
 motions in real-time via physical simulation without using any mocap
 or pre-scripted sequences. We develop a general controller that allows
 the character to fall from a wide range of heights and initial speeds,
 continuously roll on the ground, and get back on its feet, without
-inducing large stress on joints at any moment. The character's motion
+inducing large stress on joints at any moment 
+(\figref{landingOverview}).
+The character's motion
 is generated through a forward simulator and a control algorithm that
 consists of an airborne phase and a landing phase. During the airborne
 phase, the character optimizes its moment of inertia to meet the ideal
@@ -42,8 +45,107 @@ footage of experienced freerunners.
 \end{figure}
 
 
+\section{Multi-contacts Falling Motion Control for a Humanoid Robot}
+
+\subsection{Problem Description}
+
+In this section, we propose to develop a safe falling controller for 
+humanoid robots, which ensures the safety of the robots from the
+large external perturbations.
+Our approach is using the simulation samples for optimizing the controller
+to handle complex changes of contacts from highly dynamic fallings.
+By breaking a fall into a sequence of multiple contact, like ``UKEMI'' of Judo,
+we expect the robot to endure larger external perturbations.
+In addition, our simulation-based algorithm allows us to incorporate
+an arbitrary objective function so that we can prioritize the body parts
+to be protected.
+
+The development of a safe falling controller requires design decisions
+on when to detect the falling and how to evaluate the damages from falling.
+In this proposal, we assume that the falling can be easily detected 
+by observing acceleration of the center of mass and the 
+falling controller will be activated after ?? seconds.
+Evaluating the damages from the falling might be an interesting problem
+to us, because it will dramatically affect the optimal control policy.
+We plan to measure the damages on the bodies and joints
+as contact forces and joint constraint forces, which might be
+scaled to select more important ones to be protected.
+Therefore, the objective function of our opitmization is accumulated body
+damages and joint stresses while ignoring the negligible value
+under the threshold.
+
+\subsection{Related Work}
+
+Safe falling and landing for bipeds is a topic that
+receives broad attention in many disciplines. Robotic researchers are
+interested in safe falling from standing height for the purpose of
+reducing damages on robots due to accidental falls. Previous work has
+applied machine learning techniques to predict falling
+\cite{Kalyanakrishnan:2011:LPH}, as well as using an abstract model to
+control a safe fall
+\cite{Fujiwara:2002:FMC,Fujiwara:2007:OPF,Yun:2009:SFH}. 
+In contrast to the related work in robotics, we use simulation samples
+with detailed robot models to generate the optimal control policy.
+The main advantage of using simulation is that it can capture
+complex and arbitrary changes of contacts, which is hard to be 
+formulated with an abstract model.
+We draw inspiration from kinesiology literature and sport practitioners. 
+In particular, the techniques developed in freerunning and parkour 
+community are of paramount importance for designing landing control 
+algorithms capable of handling arbitrary scenarios
+\cite{Edwardes:2009:TPF,HLJ:2011:URL}. 
+
 \subsection{Algorithm}
+
+\paragraph{Optimization for a single scenario}
+
+As the simplified version of the problem, we first develop the falling
+controll for a single scenario, which starts from the given initial 
+state.
+For instance, the robot starts from its initial standing pose and 
+being push its head backward for 0.1 second with 10N force.
+When we know the parameterization of the controller, optimizing
+control parameters for the given scenario can be easily solved
+by various optimization techniques, such as 
+Covariance Matrix Adaptation (CMA) \cite{Hansen:2004:CMA}).
+After solving one instance of the scenarios, we can use the solution
+as the guidance for the rest of the scenarios.
+
+However, finding the proper parameterization of the controller
+is a very difficult problem which usually requires a lot of prior knowledge.
+In fact, there exist numerous control options in robotics, such as
+pose control, torque control, virtual force control using Jacobian
+Transpose, and so on.
+Even one of the option, a pose control has an infinite number of choices for
+representing its joint trajectories with splines.
+Indeed, the selection of control dimension has a huge impact on the
+result: we tested two parameterization of controller: a pose tracking 
+with linear segments and bezier curves, which the latter has four times
+more degrees of freedom than the former.
+The optimization indicates that the bezier curve gives us 
+much better results, which is one third of maximum impact
+comparing to the linear control (Figure ??).
+
+Therefore, our short term goal is finding the proper parameterization
+of the controller.
+One intuition from the previous falling and landing project is
+momentum planning can be a simple and robust solution, so finding the 
+proper momentum trajectory with an abstract model would be 
+a promising approach.
+Another potential approach is incrementally finding the control 
+parameterization. 
+In this approach, we search over the optimal parameterization by 
+mutating the control dimension with genetic algorithm.
+The value of each control dimension will be determined by solving
+the optimization problem with the standard technique, like CMA.
+
+
+\paragraph{Policy generation for multiple scenarios}
 
 \subsection{Results}
 
-\section{Multi-contact Falling Motion Control for a Humanoid Robot}
+\paragraph{Environment Setup}
+
+\paragraph{Preliminary Results}
+
+
