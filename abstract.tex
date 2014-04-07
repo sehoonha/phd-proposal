@@ -5,9 +5,6 @@
   However, developing controllers for dynamic motor skills is still 
   a challenging problem, which usually requires substantial amount of 
   design effort and optimization time due to its complexity.
-  %% In this dissertation, we introduce a set of techniques to expedite
-  %% the optimization process of dynamic controllers for various dynamic motor 
-  %% skills, such as jumping, rolling, vaulting, and landing.
   In this proposal, we introduce a set of techniques for developing
   controllers for various dynamic motor skills, such as jumping, rolling, 
   vaulting, and landing, for virtual characters and real robots.
@@ -17,61 +14,31 @@
   Previously, we  developed an online algorithm to control falling and 
   landing motions of virtual characters from a wide range of heights 
   and initial speeds, which can potentailly cause huge damages.
-  %% With the suggested algorithm, we demonstrate that simple momentum planning 
-  %% with the proxy model of inertia and feedback-based rules can generate 
-  %% the natural landing motions without large stresses on the joints.
   Inspired by the falling control of a virtual character, 
   we propose an optimization algorithm for multi-contact falling
   motions of a real robot for minimizing the damage at the impact.
   Unlike the existing techniques that usually consider the desired contacts 
   as invariant features, 
-  our simulation-based optimization algorithm can examine complex changes
-  of contacts which allows the robot to break its fall more dynamically.
-  As a result, our controller can protect the robot from a sider
+  our simulation-based optimization can examine complex changes
+  of contacts which allows the robot to break its fall with a longer
+  seqeunce of actions.
+  As a result, our controller can protect the robot from a wider
   range of situations including stronger perturbations.
 
-  %% we do not assume the fixed contacts
-  %% search over a sequence of contacts to find
-  %% the best falling motion that can handle a wider range of situations. 
-
-  %% We also show that the sampling-based optimization of dynamic controllers
-  %% can be accelerated by our new technique,
-  %% Covariance Matrix Adaptation with Classification (CMA-C), 
-  %% which utilizes failed simulations to approximate an infeasible region.
-  %% In additition, we introduce a new fast optimization algorithm 
-  %% for solving a parameterized objective function.
-  %% Inspired by Schmidt's Variability Practice Hypothesis, 
-  %% our algorithm simultaneously solves a continuous set of optimizers 
-  %% for parameterized motions at the interactive rate 
-  %% by sharing the simulation samples across the parameterized goals.
 
   Second, we propose a human-guided learning framework to develop dynamic
   controllers under the guidance of a human coach.
-  %% The user only needs to provide a primitive initial controller and high-level, 
-  %% human-readable instructions as if coaching a human trainee.
-  %% The virtual character interprets the provided instructions,
-  %% accumulate the knowledge from the human coach,
-  %% and iteratively improves its motor skills by optimizing control parameters.
-  In our previous work, a user can provide a sequence of high-level instructions
+  In our prior work, the user can provide a sequence of high-level instructions
   to iteratively train dynamic controllers of characters 
   as if coaching a human trainee.
-  %% To facilitate the mapping between high-level instructions and
-  %% control variables, we introduce a new representation of dynamic controllers,
-  %% the ``motor tree'', which also enables flexible re-assembly and 
-  %% efficient re-optimization by preserving the invariant features
-  %% of motor skills.
-  %% Further, the optimization process is accelerated by 
-  %% utilizing the failed previous trials.
-  %% By considering noise and uncerntainty from real hardwares,
-  %% we also train a real robot to perform dynamic motor skills 
-  %% such as rolling using our proposed system.
-  We also propose a learning framework for learning dynamic motor skills
-  of robots from a user-provided demonstrations and instructions.
+  Inspired by the training process of virtual characters,
+  we further propose a framework for learning dynamic motor skills
+  of robots from user provided demonstrations and instructions.
   In this project, we hypothesize that learning motor skills in the control domain
   is more straight-forward than learning kinematic trajectories.
   To this end, we combine demonstrations with high-level instructions
-  to identify the proper domain of controls.
-  By learing a dynamic motor skills in control domain, we can easily develop
+  to identify the proper domain of learning.
+  By learning dynamic motor skills in control domain, we can easily develop
   controllers for various dynamic motor skills, such as rolling,
   cartwheel, and yoga-balancing.
 

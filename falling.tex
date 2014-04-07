@@ -5,7 +5,7 @@ falling and landing motions of virtual and real humanoids.
 In the prior project, we developed an online algorithm for simulated 
 characters to generate natural falling and landing motions from 
 different heights and initial conditions, while absorbing impact.
-In addition, we investigate a scenario of safe falling 
+In addition, we investigate a safe falling 
 strategy for robots to protect themselves from large external 
 perturbations by executing breakfall techniques.
 
@@ -52,9 +52,10 @@ footage of experienced freerunners.
 In this section, we propose to develop a safe falling controller for 
 humanoid robots, which ensures the safety of the robots from the
 large external perturbations.
-Our approach is using the simulation samples for optimizing the controller
-to handle complex changes of contacts from highly dynamic fallings.
-By breaking a fall into a sequence of multiple contact, like ``UKEMI'' of Judo,
+Our approach is using the full-scale simulation samples for optimizing 
+the controller, which allows us to handle complex changes of contacts 
+in highly dynamic fallings.
+By breaking a fall into a sequence of multiple contacts, like ``UKEMI'' of Judo,
 we expect the robot to endure larger external perturbations.
 In addition, our simulation-based algorithm allows us to incorporate
 an arbitrary objective function so that we can prioritize the body parts
@@ -63,15 +64,15 @@ to be protected.
 The development of a safe falling controller requires design decisions
 on when to detect the falling and how to evaluate the damages from falling.
 In this proposal, we assume that the falling can be easily detected 
-by observing acceleration of the center of mass and the 
+by observing acceleration of the center of mass, so the 
 falling controller will be activated after ?? seconds.
 Evaluating the damages from the falling might be an interesting problem
 to us, because it will dramatically affect the optimal control policy.
 We plan to measure the damages on the bodies and joints
 as contact forces and joint constraint forces, which might be
 scaled to select more important ones to be protected.
-Therefore, the objective function of our opitmization is accumulated body
-damages and joint stresses while ignoring the negligible value
+The objective function of our opitmization will be the sum of body
+damages and joint stresses while ignoring the negligible values
 under the threshold.
 
 \subsection{Related Work}
@@ -100,7 +101,7 @@ algorithms capable of handling arbitrary scenarios
 \paragraph{Optimal control for a single scenario}
 
 As the simplified version of the problem, we first develop the falling
-controll for a single scenario, which starts from the given initial 
+controller for a single scenario, which starts from the given initial 
 state.
 For instance, the robot starts from its initial standing pose and 
 being push its head backward for 0.1 second with 10N force.
@@ -108,15 +109,19 @@ When we know the parameterization of the controller, optimizing
 control parameters for the given scenario can be easily solved
 by various optimization techniques, such as 
 Covariance Matrix Adaptation (CMA) \cite{Hansen:2004:CMA}).
-After solving one instance of the scenarios, we can use the solution
-as the guidance for the rest of the scenarios.
+%% After solving one instance of the scenarios, we can use the solution
+%% as the guidance for the rest of the scenarios.
 
 \begin{figure}[htbp]
 \center
   \includegraphics[width=\linewidth]{images/falling2_result}
-  \caption{Optimized falling motions with linear joint trajectories (Top)
-    and bezier trajectories (Bottom)}
-
+  \caption{
+    The different choices of control parameterization has a significant
+    impact on the solution of the optimization, both qualitatively
+    and quantitatively.
+    We optimize falling motions with linear joint trajectories (Top, 8 DoFs)
+    and bezier trajectories (Bottom, 32 DoFs). The maximum impact of the
+    bezier controller is one third of the linear controller.}
  \label{fig:robotFalling}
 \end{figure}
 
@@ -126,7 +131,7 @@ In fact, there exist numerous control options in robotics, such as
 pose control, torque control, virtual force control using Jacobian
 Transpose, and so on.
 Even one of the option, a pose control has an infinite number of choices for
-representing its joint trajectories with splines.
+representing its joint trajectories.
 Indeed, the selection of control dimension has a huge impact on the
 result: we tested two parameterization of controller: a pose tracking 
 with linear segments and bezier curves, which the latter has four times
@@ -137,7 +142,7 @@ comparing to the linear control (\figref{robotFalling}).
 
 Therefore, our short term goal is finding the proper parameterization
 of the controller.
-One intuition from the previous falling and landing project is
+One intuition from the previous project is
 momentum planning can be a simple and robust solution, so finding the 
 proper momentum trajectory with an abstract model would be 
 a promising approach.
@@ -165,19 +170,20 @@ on the body.
 To overcome this issue, we need to generate the general policy which 
 can react to the sensor data and update the falling motion of the robot.
 
-However, generating an optimal policy is a difficult problem which
-requires a lot of samples.
+However, generating an optimal policy is a difficult problem,
+because we cannot enumerate all the initial states and external
+perturbations.
 One promising approach is reinforcement learning which optimizes
 the best action for the current state by incorporating the long-term
 rewards, which is proven to be effective both in computer graphics
 \cite{Coros:2009:RTC} and robotics \cite{Morimoto:2004:SRL}.
 However, reinforcment learning requires us to select the proper set
 of state variables which is still challenging.
-If the number of state variables are too many, 
+For instance, If the number of state variables are too many, 
 the number of state becomes exponential.
 In opposite case, the state variables does not well reflect the 
 details of the full-scale simulation.
-One possible direction is to use an abstract model such as the 
+To resolve this issue, we have a plan to use an abstract model such as the 
 inverted pendulum (IP) to represent the state in reinforcement learning,
 which needs the further investigation and experiments.
 
@@ -192,7 +198,7 @@ which needs the further investigation and experiments.
 
 In this project, we try to control safe falling of virtual and real robots
 which minimizes the damages on the body parts and joints.
-As a testbed, we select a Robovie-X Standard \cite{Robovie} as a target robot
+As a testbed, we select a Robovie-X Standard \cite{Robovie} as a subject
 (\figref{robovies}).
 A robovie has 17 Degrees of Freedom (Head: 1, Arm: 6, leg 10) 
 that are operated by VS-S092J servo motors and a gyro/acceleration sensor board.
@@ -201,13 +207,13 @@ which takes keyframed trajectories as inputs.
 However, we have a plan to change the control framework using Arduino 
 for more flexible control.
 Moreover, we prepare the virtual model of the robovie from the CAD model,
-which can be simulated in Dart simulator \cite{Dart} (\figref{robovies}).
+which can be simulated in DART framework \cite{Dart} (\figref{robovies}).
 Then the simulation parameters such as torque limit or maximum speeds are 
-specified from the specification of servos.
+adjsuted by using the specifications of servos as references.
 
-We want to generate a robust falling controller which can handle
-a wide range of initial states and external perturbations.
-It may include the different state of the robot, different environments, 
+For possible demos, we want to generate a robust falling controller 
+which can handle a wide range of scenarios:
+it may include the different initial state of the robot, different environments, 
 and different directions/strengths of pushes.
 For all cases, the damage should be minimized which can be verified by 
 analyzing the simulation data or the motion captured data of robots.
