@@ -83,31 +83,48 @@ The rest of the sections are organized as follows:
   algorithm for controlling falling and landing motions of virtual
   characters from a wide rage of heights and initial speeds.
   while reducing joint stress.
-  Further, we develop a safe falling algorithm for a robot by planning a sequence of
-  multiple contacts, which endures larger external perturbatations comparing to
-  the existing methods.
-
+  Further, we propose a safe falling algorithm for a robot using
+  a simulation-based optimization algorithm to capture the complex
+  changes of contacts during the falling motion, which endures larger 
+  external perturbatations comparing to the existing methods.
 \item 
-  \textbf{Human-guided iterative training of dynamic motions}
-  Also, we introduce an iterative training system for dynamic motor skills
-  inspired by human coaching techniques, which uses human-in-the-loop
-  (HITL) optimization for interactive training.
-  In this system, the user only needs to provide a primitive initial controller
-  and high-level, human-readable instructions as if coaching a human trainee.
-  The virtual character interprets the provided instructions,
-  accumulate the knowledge from the human coach,
-  and iteratively improves its motor skills by optimizing control parameters.
-  We propose a new hierarchical representation of controllers, 
-  the ``motor tree'' for interpreting the instructions and accumulating
-  the knowledge on motions.
-  In addition, we develop a new sampling-based optimization method,
-  Covariance Matrix Adaptation with Classification (CMA-C), 
-  which efficiently solves the constrained problem by estimating
-  the infeasible region from bad samples.
-  The system is further extended by considering the hardware limitations 
-  and uncertainties to support training dynamic motions for robots.
-  With the proposed system, we demonstrate the design process of
-  comlex dynamic controllers including jumps, vaults, rolls, and flips.
+  \textbf{Human-guided training of dynamic motions}
+  Also, we investigate human-guide learning frameworks for dynamic
+  motor skills from user instructions or demonstrations.
+  These systems utilize the user-provided informations to
+  accumulate the knowledge on the state-action pairs and derive
+  a policy that reproduces the demonstrated or described behaviors.
+  Since the learing of optimal policies can be done by simply
+  watching a demonstration of the task to be performed,
+  the development of controllers becomes much easier 
+  than manual design.
+  In our prior work, we introduce an iterative training system for dynamic
+  motor skills inspired by human coaching techniques, which uses 
+  human-in-the-loop (HITL) optimization for interactive training.  
+  Further, we propose to develop a Learning from demonstration (LfD)
+  framework for learning  dynamic motor skills of humanoid robots 
+  from both demonstrations and instructions, by following 
+  the example trajectories in a user-suggested control domain.
+  %% Also, we introduce an human-guided learning framework for dynamic motor
+  %% skills inspired by human coaching techniques, which can be considered
+  %% as a human-in-the-loop (HITL) optimization or learning from 
+  %% demonstrations (LfD) paradigm.
+  %% In this system, the user only needs to provide a primitive initial controller
+  %% and high-level, human-readable instructions as if coaching a human trainee.
+  %% The virtual character interprets the provided instructions,
+  %% accumulate the knowledge from the human coach,
+  %% and iteratively improves its motor skills by optimizing control parameters.
+  %% We propose a new hierarchical representation of controllers, 
+  %% the ``motor tree'' for interpreting the instructions and accumulating
+  %% the knowledge on motions.
+  %% In addition, we develop a new sampling-based optimization method,
+  %% Covariance Matrix Adaptation with Classification (CMA-C), 
+  %% which efficiently solves the constrained problem by estimating
+  %% the infeasible region from bad samples.
+  %% The system is further extended by considering the hardware limitations 
+  %% and uncertainties to support training dynamic motions for robots.
+  %% With the proposed system, we demonstrate the design process of
+  %% comlex dynamic controllers including jumps, vaults, rolls, and flips.
 
 
 \end{itemize}

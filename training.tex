@@ -1,4 +1,4 @@
-\chapter{Human-guided iterative training \protect\\ of dynamic motions}
+\chapter{Human-guided training \protect\\ of dynamic motions}
 In this section, we propose iterative training frameworks for
 dynamic motor skills of virtual characters and real robots.
 We already introduced an intuitive and interactive system for
@@ -45,7 +45,7 @@ jumps, monkey vaults, drop-and-rolls, and wall-backflips
 \end{figure}
 
 
-\section{Learning Dynamic Skills in Control Domain for a Humanoid Robot}
+\section{Learning Dynamic Skills for a Humanoid Robot}
 
 \subsection{Problem Description}
 
@@ -110,7 +110,7 @@ Principal Component Analysis (PCA) or a control rig space, as defined
 in \cite{Ha:2014:ITD}.
 Especially, control rigs can project the high-dimensional control into
 lower dimensions by control multipel degrees of freedoms simultaneously,
-and can be easily  easily constructed from a sequence of human-readble 
+and can be easily easily constructed from a sequence of human-readble 
 instructions.
 For instance, ``MOVE DOWN'' instruction will add a ``Leg-distance'' rig,
 which controls the distance between the root and feet using an inverse
@@ -130,7 +130,7 @@ However, deploying the controller to the real robot with hardwares
 may require the additional robustness of the controller
 due to the noise on the sensors and servos.
 Therefore, we may need to ensure the robustness of the solution,
-which can be potentially done by  testing the objective value 
+which can be potentially done by testing the objective value 
 with minor perturbations as suggested in Ha \etal \cite{Ha:2013:PSB}.
 
 \subsection{Expected Results}
@@ -147,6 +147,8 @@ from the user-provided demonstrations and instructions.
 We consider various target motions 
 such as rolling, cartwheel, or yoga-balancing,
 which are currently developed with manual keyframing (\figref{cartwheel}).
+To compare our framework with previous works, trained motions 
+in kinematic domain and control domain will be compared.
 We also want to analyze thtat how a robot interprets user demonstrations
 by comparing the joint trajectories and contact states.
 
