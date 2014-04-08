@@ -58,15 +58,15 @@ In this section, we propose to develop a framework for learning
 dynamic motor skills of humanoid robots from user-provided demonstrations 
 and instructions.
 Our motivation is that both demonstrations and instructions are
-common ways to guide a human-trainee, as we can see in a lot
+common ways to guide a human-trainee, as we can see in a lot of
 online tutorial videos.
-Within our framework, a coach demonstrates a set of example task motions
+In our framework, a coach demonstrates a set of example task motions
 and records joint or mementum trajectories.
 However, for full-body dynamic motor skills, recorded trajectories cannot 
 be directly applied to the robot due to the different dynamics 
 between a coach and the robot.
 To interprete the demonstrated example motions properly,
-we use human-readable instruction which maps the motions
+we use high-level instructions which map the motions
 to a proper control space, such a low-dimensional torque space 
 or a control rig space \cite{Ha:2014:ITD} 
 that suggested in our previous work.
@@ -114,18 +114,18 @@ of a coach and a trainee, which can make a huge impact on the motion
 with just minor deviations.
 
 To overcome this issue, we hypothesize that learning in the control domain,
-instead of the kinematic domain, would allow straight-forward learning and
-roboust behaviors.
+instead of the kinematic domain, would allow more straight-forward 
+learning and roboust behaviors.
 Here is an illustrative example:
 joint trajectories of rolling motions for human and a
 robot might be very different from each other due to the different
 dimensions, but semantically both motions consist of 
 three sub-stages: leaning, kicking, and stopping.
-To this end, we combine the demonstration with user-provided high-level
+To this end, we combine the demonstration with user provided high-level
 instructions, which can help us to identify the proper domain of controls.
 The control domain can be a projected low-dimensional control space using
 Principal Component Analysis (PCA) or a control rig space, as defined
-in \cite{Ha:2014:ITD}.
+in the previous work \cite{Ha:2014:ITD}.
 Especially, control rigs can project the high-dimensional control into
 lower dimensions by control multiple degrees of freedoms simultaneously,
 and can be easily constructed from a sequence of human-readble 
@@ -133,8 +133,9 @@ instructions.
 For instance, ``MOVE DOWN'' instruction will add a ``Leg-distance'' rig,
 which controls the distance between the root and feet using an inverse
 kinematics solver.
-We hope that high-level instructions can expedite the learning from
-user demonstrations for dynamic motor skills.
+We hope that high-level instructions combined with demonstrations
+can expedite the learning from user demonstrations 
+for dynamic motor skills.
 
 \paragraph{Optimization}
 
@@ -176,5 +177,5 @@ For instance, joint or torque trajectories of trained motions
 can be analyzed to compare the motions of the coach and the robot.
 Further, the trajectories of trained motions in kinematic domain 
 and control domain can be analyzed to compare our framework
-with previous papers.
+with previously suggested frameworks.
 
