@@ -1,11 +1,13 @@
 \chapter{Optimization of \protect\\ Falling and Landing Motions}
 
+\indent
+
 This section describes algorithms for generating natural and safe
 falling and landing motions of virtual and real humanoids.
 In the prior project, we developed an online algorithm for simulated 
 characters to generate natural falling and landing motions from 
 different heights and initial conditions, while absorbing impact.
-In addition, we investigate a safe falling 
+In this project, we investigate a safe falling 
 strategy for robots to protect themselves from large external 
 perturbations by executing breakfall techniques.
 
@@ -49,33 +51,37 @@ footage of experienced freerunners.
 
 \subsection{Problem Description}
 
+\indent
+
 In this section, we propose to develop a safe falling controller for 
-humanoid robots, which ensures the safety of the robots from the
+humanoid robots, which ensures the safety of the robots from 
 large external perturbations.
-Our approach is using the full-scale simulation samples for optimizing 
+Our approach uses the full-scale simulation samples for optimizing 
 the controller, which allows us to handle complex changes of contacts 
-in highly dynamic fallings.
-By breaking a fall into a sequence of multiple contacts, like ``UKEMI'' of Judo,
+in highly dynamic falls.
+By breaking a fall into a sequence of multiple contacts, like ``UKEMI'' in Judo,
 we expect the robot to endure larger external perturbations.
 In addition, our simulation-based algorithm allows us to incorporate
 an arbitrary objective function so that we can prioritize the body parts
 to be protected.
 
 The development of a safe falling controller requires design decisions
-on when to detect the falling and how to evaluate the damages from falling.
-In this proposal, we assume that the falling can be easily detected 
+on when to detect a fall and how to evaluate the damages from falling.
+In this proposal, we assume that the fall can be easily detected 
 by observing acceleration of the center of mass, so the 
 falling controller will be activated after ?? seconds.
-Evaluating the damages from the falling might be an interesting problem
+Evaluating the damage from the fall might be an interesting problem
 to us, because it will dramatically affect the optimal control policy.
-We plan to measure the damages on the bodies and joints
-as contact forces and joint constraint forces, which might be
+We plan to measure the damage on the bodies and joints by referring
+to body contact forces and joint constraint forces, which might be
 scaled to select more important ones to be protected.
 The objective function of our opitmization will be the sum of body
 damages and joint stresses while ignoring the negligible values
 under the threshold.
 
 \subsection{Related Work}
+
+\indent
 
 Safe falling and landing for bipeds is a topic that
 receives broad attention in many disciplines. Robotic researchers are
@@ -99,12 +105,11 @@ algorithms capable of handling arbitrary scenarios
 \subsection{Algorithm}
 
 \paragraph{Optimal control for a single scenario}
-
 As the simplified version of the problem, we first develop the falling
 controller for a single scenario, which starts from the given initial 
 state.
 For instance, the robot starts from its initial standing pose and 
-being push its head backward for 0.1 second with 10N force.
+its head is pushed backward for 0.1 second with 10N force.
 When we know the parameterization of the controller, optimizing
 control parameters for the given scenario can be easily solved
 by various optimization techniques, such as 
@@ -127,45 +132,44 @@ Covariance Matrix Adaptation (CMA) \cite{Hansen:2004:CMA}).
 
 However, finding the proper parameterization of the controller
 is a very difficult problem which usually requires a lot of prior knowledge.
-In fact, there exist numerous control options in robotics, such as
+In fact, there are numerous control options in robotics, such as
 pose control, torque control, virtual force control using Jacobian
 Transpose, and so on.
-Even one of the option, a pose control has an infinite number of choices for
+Even one of the options, a pose control, has an infinite number of choices for
 representing its joint trajectories.
 Indeed, the selection of control dimension has a huge impact on the
-result: we tested two parameterization of controller: a pose tracking 
-with linear segments and bezier curves, which the latter has four times
-more degrees of freedom than the former.
+result: we tested two parameterizations of controllers, a pose tracking 
+with linear segments and bezier curves. 
 The optimization indicates that the bezier curve gives us 
 much better results, which is one third of maximum impact
 comparing to the linear control (\figref{robotFalling}).
 
 Therefore, our short term goal is finding the proper parameterization
 of the controller.
-One intuition from the previous project is
+One principal from the previous project is that
 momentum planning can be a simple and robust solution, so finding the 
 proper momentum trajectory with an abstract model would be 
 a promising approach.
 Another potential approach is incrementally finding the control 
 parameterization. 
 In this approach, we search over the optimal parameterization by 
-mutating the control dimension with genetic algorithm.
+mutating the control dimension with a genetic algorithm.
 The value of each control dimension will be determined by solving
 the optimization problem with the standard technique, like CMA.
 
 
 \paragraph{Optimal policy for multiple scenarios}
-
+%% \hfill \break \indent
 Even if we have an optimal motion for a single scenario,
 it is not sufficient for the protection of real robots.
-First, the state of the robot is keep changing due to its original
+First, the state of the robot keeps changing due to its original
 task (i.e. locomotion or manipulation), so we cannot assume
 the fixed initial state.
 In addition, we may not know the exact information on the current
 situation, such as the amount of external forces, because sensors
-provides us only limited amount of data that currupted by noise.
+provide us only limited amount of data that is corrupted by noise.
 Therefore, the optimal motion for the single scenario is not likely 
-to be optimal for other situations, and further cause the severe damages
+to be optimal for other situations, and further causes severe damage
 on the body.
 To overcome this issue, we need to generate the general policy which 
 can react to the sensor data and update the falling motion of the robot.
@@ -180,12 +184,12 @@ rewards, which is proven to be effective both in computer graphics
 However, reinforcment learning requires us to select the proper set
 of state variables which is still challenging.
 For instance, If the number of state variables are too many, 
-the number of state becomes exponential.
-In opposite case, the state variables does not well reflect the 
+the number of states becomes exponential.
+In the opposite case, the state variables do not well reflect the 
 details of the full-scale simulation.
 To resolve this issue, we have a plan to use an abstract model such as the 
 inverted pendulum (IP) to represent the state in reinforcement learning,
-which needs the further investigation and experiments.
+which needs further investigation and experiments.
 
 \subsection{Expected Results}
 
